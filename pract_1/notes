@@ -1,0 +1,10 @@
+Una API puede ser local
+Objetivo --> Capturar los datos de 2 Apis --> OpenWeather
+
+OpenWeather --> Registrarnos y obtener un token 
+				--> Porque desde mi sistema mis dispositivos se van a conectar con dicha api directamente con el token y va a obtener los datos del tiempo
+				--> También puedo obtener un datasheet para generar o entrenar una aplicación de IA
+				--> La conexión a OpenWeather está guiado, tras realizar esto debemos obtener los datos a través de dos formas distintas.
+						* Usando python --> ipynb --> usar con google collab
+						* Usando NodeRed
+
