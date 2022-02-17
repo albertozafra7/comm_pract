@@ -1,0 +1,204 @@
+[
+    {
+        "id": "bd078434ea0db0ed",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d064ed81c2373f30",
+        "type": "inject",
+        "z": "bd078434ea0db0ed",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 220,
+        "wires": [
+            [
+                "77f268f903cef8c1"
+            ]
+        ]
+    },
+    {
+        "id": "77f268f903cef8c1",
+        "type": "openweathermap",
+        "z": "bd078434ea0db0ed",
+        "name": "",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "Albatera",
+        "country": "Spain",
+        "language": "en",
+        "x": 320,
+        "y": 220,
+        "wires": [
+            [
+                "81eab4cb5c0763e5",
+                "c5c33c339742af4f"
+            ]
+        ]
+    },
+    {
+        "id": "81eab4cb5c0763e5",
+        "type": "function",
+        "z": "bd078434ea0db0ed",
+        "name": "",
+        "func": "msg.payload=msg.payload.tempc\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 220,
+        "wires": [
+            [
+                "7bec39f0af8ec42d",
+                "42ba41356150378d"
+            ]
+        ]
+    },
+    {
+        "id": "7bec39f0af8ec42d",
+        "type": "ui_gauge",
+        "z": "bd078434ea0db0ed",
+        "name": "",
+        "group": "0c1fe831f0e36d2a",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temp Albatera",
+        "label": "ºC",
+        "format": "{{value}}",
+        "min": "-15",
+        "max": "40",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 680,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "42ba41356150378d",
+        "type": "debug",
+        "z": "bd078434ea0db0ed",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "a72b7f74e2737a66",
+        "type": "ui_chart",
+        "z": "bd078434ea0db0ed",
+        "name": "",
+        "group": "0c1fe831f0e36d2a",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "HumidityChart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 700,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c5c33c339742af4f",
+        "type": "function",
+        "z": "bd078434ea0db0ed",
+        "name": "",
+        "func": "msg.payload = msg.payload.humidity\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 320,
+        "wires": [
+            [
+                "a72b7f74e2737a66"
+            ]
+        ]
+    },
+    {
+        "id": "0c1fe831f0e36d2a",
+        "type": "ui_group",
+        "name": "Temp",
+        "tab": "9a6c6cffb35b5c82",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "9a6c6cffb35b5c82",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
