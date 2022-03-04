@@ -1,0 +1,258 @@
+[
+    {
+        "id": "bd078434ea0db0ed",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d064ed81c2373f30",
+        "type": "inject",
+        "z": "bd078434ea0db0ed",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "30",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "10",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 220,
+        "wires": [
+            [
+                "77f268f903cef8c1",
+                "f2d0b3dce809162d"
+            ]
+        ]
+    },
+    {
+        "id": "77f268f903cef8c1",
+        "type": "openweathermap",
+        "z": "bd078434ea0db0ed",
+        "name": "",
+        "wtype": "forecast",
+        "lon": "",
+        "lat": "",
+        "city": "Albatera",
+        "country": "Spain",
+        "language": "en",
+        "x": 320,
+        "y": 220,
+        "wires": [
+            [
+                "116d5bb3.ee92a4"
+            ]
+        ]
+    },
+    {
+        "id": "81eab4cb5c0763e5",
+        "type": "function",
+        "z": "bd078434ea0db0ed",
+        "name": "",
+        "func": "msg.payload=msg.payload.tempc\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 140,
+        "wires": [
+            [
+                "7bec39f0af8ec42d"
+            ]
+        ]
+    },
+    {
+        "id": "7bec39f0af8ec42d",
+        "type": "ui_gauge",
+        "z": "bd078434ea0db0ed",
+        "name": "",
+        "group": "0c1fe831f0e36d2a",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temp Albatera",
+        "label": "ºC",
+        "format": "{{value}}",
+        "min": "-15",
+        "max": "40",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 740,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "42ba41356150378d",
+        "type": "debug",
+        "z": "bd078434ea0db0ed",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "a72b7f74e2737a66",
+        "type": "ui_chart",
+        "z": "bd078434ea0db0ed",
+        "name": "",
+        "group": "0c1fe831f0e36d2a",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "HumidityChart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 820,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c5c33c339742af4f",
+        "type": "function",
+        "z": "bd078434ea0db0ed",
+        "name": "",
+        "func": "msg.payload = msg.payload.main.humidity\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 420,
+        "wires": [
+            [
+                "a72b7f74e2737a66",
+                "42ba41356150378d"
+            ]
+        ]
+    },
+    {
+        "id": "3367e45f.cc981c",
+        "type": "function",
+        "z": "bd078434ea0db0ed",
+        "name": "++",
+        "func": "if ( (msg.i += 1) < msg.items.length ) return msg;\n",
+        "outputs": 1,
+        "x": 450,
+        "y": 440,
+        "wires": [
+            [
+                "116d5bb3.ee92a4"
+            ]
+        ]
+    },
+    {
+        "id": "116d5bb3.ee92a4",
+        "type": "function",
+        "z": "bd078434ea0db0ed",
+        "name": "for each item",
+        "func": "if( msg.i     == undefined ) msg.i = 0;\nif( msg.items == undefined ) msg.items = msg.payload;\n\nmsg.payload = msg.items[ msg.i ];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 452,
+        "y": 412,
+        "wires": [
+            [
+                "3367e45f.cc981c",
+                "c5c33c339742af4f"
+            ]
+        ]
+    },
+    {
+        "id": "f2d0b3dce809162d",
+        "type": "openweathermap",
+        "z": "bd078434ea0db0ed",
+        "name": "",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "Albatera",
+        "country": "Spain",
+        "language": "en",
+        "x": 340,
+        "y": 140,
+        "wires": [
+            [
+                "81eab4cb5c0763e5"
+            ]
+        ]
+    },
+    {
+        "id": "0c1fe831f0e36d2a",
+        "type": "ui_group",
+        "name": "Temp",
+        "tab": "9a6c6cffb35b5c82",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "9a6c6cffb35b5c82",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
