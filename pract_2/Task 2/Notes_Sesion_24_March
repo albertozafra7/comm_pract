@@ -1,0 +1,5 @@
+Paso 1 --> Conectarse a la red Cudy-081C mediante la contraseña "Comunica2022"
+Paso 2 --> Nos conectamos a la web de Shelly mediante la dirección "192.168.10.110"
+Paso 3 --> Hacemos una petición http desde Node-Red a la dirección "192.168.10.110/emeter/0"
+Paso 4 --> Se realiza una petición http de tipo get para activar o desactivar el relé a la dirección "192.168.10.110/relay/0?turn=on" si se desea activa y 192.168.10.110/relay/0?turn=off" si se desea desactivar
+Paso 5 --> Si se desea conocer las variables que contiene el relé se debe de realizar una petición http de tipo get a la dirección "192.168.10.110/relay/0"
