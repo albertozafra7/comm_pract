@@ -3,3 +3,61 @@ Paso 2 --> Nos conectamos a la web de Shelly mediante la dirección "192.168.10.
 Paso 3 --> Hacemos una petición http desde Node-Red a la dirección "192.168.10.110/emeter/0"
 Paso 4 --> Se realiza una petición http de tipo get para activar o desactivar el relé a la dirección "192.168.10.110/relay/0?turn=on" si se desea activa y 192.168.10.110/relay/0?turn=off" si se desea desactivar
 Paso 5 --> Si se desea conocer las variables que contiene el relé se debe de realizar una petición http de tipo get a la dirección "192.168.10.110/relay/0"
+
+https://shelly.cloud/documents/developers/ddd_communication.pdf
+
+// Cosas adicionales
+[command] could be:
+turn=on - switch output ON
+turn=off - switch output OFF
+turn=toggle - reverese state
+On and off can be combined with timer:
+timer=X - where X is in seconds. Switch output will be turned On or OFF for X seconds and will be
+switched back to previews state after that.
+Examples:
+http://192.168.0.40/relay/0?turn=on Will switch output ON.
+http://192.168.0.40/relay/0?turn=on&timer=10 Will switch output ON for 10 sec.
+http://192.168.0.40/relay/0?turn=toggle Will switch the output On if OFF or vice
+version
+
+[command] could be:
+go=open - open roller
+go=close - close roller
+go=stop - stop roller
+go=to_pos&roller_pos=0-100 - open roller to this position. Need to calibrate it before that.
+Open and close can be combined with the duration
+duration=X - move the roller X seconds.
+Examples:
+http://192.168.0.40/roller/0?go=open Will open the roller
+http://192.168.0.40/roller/0?turn=open&duration=5 Will opening 5 seconds.
+Shelly Bulb/LED/RGBWW/RGBW2
+Color mode:
+The main command to contorl them is:
+http://[deviceIP]/color/0?[command]&[command]
+[command] id you choose Color mode could be:
+turn=on - switch output ON turn=off - switch output OFF turn=toggle - reverese state On and off can be
+combined with timer: timer=X - where X
+is in seconds. Switch output will be turned On or OFF for X seconds and will be
+switched back to previews state after that.
+red = 0 - 255 ; change red color intensity
+blue = 0 - 255 ; change blue color intensity green = 0 - 255 ; change green color intensity white = 0 -
+255 ; change white color intensity gain = 0 - 100 ; change intensity for RGB
+http://192.168.0.40/roller/0?go=to_pos&roller_pos=30 Will Open at 30%
+
+command] id you choose Color mode could be:
+turn=on - switch output ON turn=off - switch output OFF turn=toggle - reverese state On and off can be
+combined with timer: timer=X - where X
+is in seconds. Switch output will be turned On or OFF for X seconds and will be
+switched back to previews state after that.
+red = 0 - 255 ; change red color intensity
+blue = 0 - 255 ; change blue color intensity green = 0 - 255 ; change green color intensity white = 0 -
+255 ; change white color intensity gain = 0 - 100 ; change intensity for RGB
+http://192.168.0.40/roller/0?go=to_pos&roller_pos=30 Will Open at 30%
+
+Examples:
+http://192.168.0.50/color/0?turn=on&red=255&green=86&blue=112&white=0
+Will switch device ON and set Red, Blue, Green and White colours.
+http://192.168.0.50/color/0?turn=on&white=20 Will switch device ON and set only
+White
+http://192.168.0.40/color/0?turn=on Will switch device ON.
+http://192.168.0.50/color/0?turn=on&gain=27 Change the intensity or RGB to 27%

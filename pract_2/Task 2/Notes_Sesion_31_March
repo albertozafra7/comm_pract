@@ -1,0 +1,11 @@
+En las direcciones "192.168.10.100", "192.168.10.109" y "192.168.10.200" hay relés
+
+Para conectarnos al broker es preciso introducir un bloque mqtt y configurar el server con la ip "192.168.10.144", dicho broker es el que contiene las conexiones entre los dispositivos y el shelly. Esto se introduce en la tab de connection, por otra parte en la pestaña de seguridad es preciso introducir el usuario y la contraseña que en este caso es "comunicaciones" y "comunicacionespass" respectivamente.
+
+Una vez generado el servidor introducimos en el bloque la subscripción al topic "/clase/prueba"
+
+El bloque "mqtt_in" se subscribe a los topics y recibe sus mensajes, mientras que el bloque "mqtt_out" se conecta como productor y publica en el topic.
+
+Para ver todos los topics del shelly es preciso subscribirse al topic "shelles/shellyem1/#", donde "shelles" indica que me voy a conectar a un shelly, "/shellyem1" indica el id del shelly al que me quiero conectar y lo que va después indica el servicio al cual me quiero conectar. Por otro lado, si quiero recibir lo que publiquen todos los shellys se puede poner como "shelles/#"
+
+ 
