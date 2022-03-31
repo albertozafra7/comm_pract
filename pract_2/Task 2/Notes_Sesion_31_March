@@ -6,6 +6,8 @@ Una vez generado el servidor introducimos en el bloque la subscripción al topic
 
 El bloque "mqtt_in" se subscribe a los topics y recibe sus mensajes, mientras que el bloque "mqtt_out" se conecta como productor y publica en el topic.
 
-Para ver todos los topics del shelly es preciso subscribirse al topic "shelles/shellyem1/#", donde "shelles" indica que me voy a conectar a un shelly, "/shellyem1" indica el id del shelly al que me quiero conectar y lo que va después indica el servicio al cual me quiero conectar. Por otro lado, si quiero recibir lo que publiquen todos los shellys se puede poner como "shelles/#"
+Para ver todos los topics del shelly es preciso subscribirse al topic "shellies/shellyem1/#", donde "shellies" indica que me voy a conectar a un shelly, "/shellyem1" indica el id del shelly al que me quiero conectar y lo que va después indica el servicio al cual me quiero conectar. Por otro lado, si quiero recibir lo que publiquen todos los shellys se puede poner como "shellies/#"
+
+Para publicar sobre el relay hay que publicar en el topic "shellies/shellyem1/relay/0/command", si no no funciona
 
  
