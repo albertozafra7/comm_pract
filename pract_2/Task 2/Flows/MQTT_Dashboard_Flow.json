@@ -1,0 +1,397 @@
+[
+    {
+        "id": "6626040bc1318d69",
+        "type": "tab",
+        "label": "Flow 10",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "592c56bab3aa9d26",
+        "type": "mqtt out",
+        "z": "6626040bc1318d69",
+        "name": "",
+        "topic": "shellies/shellyem1/relay/0/command",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "19ccb5689e7e7f7c",
+        "x": 1070,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "01ae8aa2b9760517",
+        "type": "ui_led",
+        "z": "6626040bc1318d69",
+        "order": 6,
+        "group": "2ac8e3fa.8b8584",
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#008000",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 530,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "24c02ec2a36c3f1f",
+        "type": "mqtt in",
+        "z": "6626040bc1318d69",
+        "name": "",
+        "topic": "shellies/shellyem1/relay/0",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "19ccb5689e7e7f7c",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "3b7f00269b66ffc3"
+            ]
+        ]
+    },
+    {
+        "id": "3b7f00269b66ffc3",
+        "type": "function",
+        "z": "6626040bc1318d69",
+        "name": "",
+        "func": "if(msg.payload == \"on\")\n    msg.payload = true;\nelse\n    msg.payload = false;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 100,
+        "wires": [
+            [
+                "01ae8aa2b9760517"
+            ]
+        ]
+    },
+    {
+        "id": "25b804c8b91c601c",
+        "type": "ui_button",
+        "z": "6626040bc1318d69",
+        "name": "",
+        "group": "2ac8e3fa.8b8584",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "On",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "on",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 470,
+        "y": 200,
+        "wires": [
+            [
+                "592c56bab3aa9d26"
+            ]
+        ]
+    },
+    {
+        "id": "7f268daba34fa7cf",
+        "type": "ui_button",
+        "z": "6626040bc1318d69",
+        "name": "",
+        "group": "2ac8e3fa.8b8584",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Off",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "off",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 470,
+        "y": 260,
+        "wires": [
+            [
+                "592c56bab3aa9d26"
+            ]
+        ]
+    },
+    {
+        "id": "4e5988c414938454",
+        "type": "mqtt in",
+        "z": "6626040bc1318d69",
+        "name": "",
+        "topic": "/clase/humedad",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "19ccb5689e7e7f7c",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 360,
+        "wires": [
+            [
+                "012c40948caea54e"
+            ]
+        ]
+    },
+    {
+        "id": "28dcb37881033708",
+        "type": "mqtt in",
+        "z": "6626040bc1318d69",
+        "name": "",
+        "topic": "/clase/temperatura",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "19ccb5689e7e7f7c",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 420,
+        "wires": [
+            [
+                "76d3902ff4eb2308"
+            ]
+        ]
+    },
+    {
+        "id": "76d3902ff4eb2308",
+        "type": "ui_gauge",
+        "z": "6626040bc1318d69",
+        "name": "",
+        "group": "2ac8e3fa.8b8584",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "ºC",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "30",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 450,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "012c40948caea54e",
+        "type": "ui_chart",
+        "z": "6626040bc1318d69",
+        "name": "",
+        "group": "2ac8e3fa.8b8584",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "label": "Humedad",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 440,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ab3e07127a8dbfa0",
+        "type": "mqtt in",
+        "z": "6626040bc1318d69",
+        "name": "",
+        "topic": "shellies/shellyem1/emeter/0/total",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "19ccb5689e7e7f7c",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 230,
+        "y": 300,
+        "wires": [
+            [
+                "c8c11d54e9efeb97"
+            ]
+        ]
+    },
+    {
+        "id": "c8c11d54e9efeb97",
+        "type": "ui_gauge",
+        "z": "6626040bc1318d69",
+        "name": "",
+        "group": "2ac8e3fa.8b8584",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Voltaje",
+        "label": "V",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 430,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "03b8c57d51c00fb8",
+        "type": "debug",
+        "z": "6626040bc1318d69",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "1fd7ca99eb156d65",
+        "type": "mqtt in",
+        "z": "6626040bc1318d69",
+        "name": "",
+        "topic": "#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "19ccb5689e7e7f7c",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 230,
+        "y": 520,
+        "wires": [
+            [
+                "03b8c57d51c00fb8"
+            ]
+        ]
+    },
+    {
+        "id": "19ccb5689e7e7f7c",
+        "type": "mqtt-broker",
+        "name": "Broker_Raspberry",
+        "broker": "192.168.10.144",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "2ac8e3fa.8b8584",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "ebb1ed1c.5ebe2",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "ebb1ed1c.5ebe2",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
