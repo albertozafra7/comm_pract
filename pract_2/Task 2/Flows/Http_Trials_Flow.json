@@ -1,0 +1,680 @@
+[
+    {
+        "id": "8ba128145ce775de",
+        "type": "tab",
+        "label": "Flow 6",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5f7813715298c9ab",
+        "type": "inject",
+        "z": "8ba128145ce775de",
+        "name": "Emeter",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 180,
+        "wires": [
+            [
+                "660e38027b328326"
+            ]
+        ]
+    },
+    {
+        "id": "660e38027b328326",
+        "type": "http request",
+        "z": "8ba128145ce775de",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "192.168.10.110/emeter/0",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 350,
+        "y": 180,
+        "wires": [
+            [
+                "b7a22c336f5bb825"
+            ]
+        ]
+    },
+    {
+        "id": "b7a22c336f5bb825",
+        "type": "debug",
+        "z": "8ba128145ce775de",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "e1d8ad0011fb1482",
+        "type": "http request",
+        "z": "8ba128145ce775de",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "192.168.10.110/relay/0?turn=on",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 350,
+        "y": 260,
+        "wires": [
+            [
+                "1d46871c3557161f"
+            ]
+        ]
+    },
+    {
+        "id": "dc1240143d256ccf",
+        "type": "inject",
+        "z": "8ba128145ce775de",
+        "name": "Relay ON",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 260,
+        "wires": [
+            [
+                "e1d8ad0011fb1482"
+            ]
+        ]
+    },
+    {
+        "id": "1d46871c3557161f",
+        "type": "debug",
+        "z": "8ba128145ce775de",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "cf81a9086ea1a0fe",
+        "type": "http request",
+        "z": "8ba128145ce775de",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "192.168.10.110/relay/0?turn=off",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 350,
+        "y": 320,
+        "wires": [
+            [
+                "c765f6bfe16a0dc2"
+            ]
+        ]
+    },
+    {
+        "id": "643abdd9fce23858",
+        "type": "inject",
+        "z": "8ba128145ce775de",
+        "name": "Relay OFF",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 320,
+        "wires": [
+            [
+                "cf81a9086ea1a0fe"
+            ]
+        ]
+    },
+    {
+        "id": "c765f6bfe16a0dc2",
+        "type": "debug",
+        "z": "8ba128145ce775de",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "74f1b6a674a09f2c",
+        "type": "http request",
+        "z": "8ba128145ce775de",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "192.168.10.110/relay/0",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 350,
+        "y": 380,
+        "wires": [
+            [
+                "ae41d31b98077712"
+            ]
+        ]
+    },
+    {
+        "id": "7cc1480bc35932d4",
+        "type": "inject",
+        "z": "8ba128145ce775de",
+        "name": "Read Relay",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 380,
+        "wires": [
+            [
+                "74f1b6a674a09f2c"
+            ]
+        ]
+    },
+    {
+        "id": "ae41d31b98077712",
+        "type": "debug",
+        "z": "8ba128145ce775de",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "d6859073dddceb61",
+        "type": "http request",
+        "z": "8ba128145ce775de",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "192.168.10.110/relay/0?turn=toggle",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 350,
+        "y": 460,
+        "wires": [
+            [
+                "4d401869c18ff397"
+            ]
+        ]
+    },
+    {
+        "id": "80d4f1adf2b1345a",
+        "type": "inject",
+        "z": "8ba128145ce775de",
+        "name": "Toggle Relay",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 460,
+        "wires": [
+            [
+                "d6859073dddceb61"
+            ]
+        ]
+    },
+    {
+        "id": "4d401869c18ff397",
+        "type": "debug",
+        "z": "8ba128145ce775de",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "f2cc3287e224b96f",
+        "type": "http request",
+        "z": "8ba128145ce775de",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://192.168.10.110/relay/0?turn=on&timer=10 ",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 410,
+        "y": 540,
+        "wires": [
+            [
+                "80a79dd481e50d6a"
+            ]
+        ]
+    },
+    {
+        "id": "40714e8cf4082ef1",
+        "type": "inject",
+        "z": "8ba128145ce775de",
+        "name": "Relay ON for 10s",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 540,
+        "wires": [
+            [
+                "f2cc3287e224b96f"
+            ]
+        ]
+    },
+    {
+        "id": "80a79dd481e50d6a",
+        "type": "debug",
+        "z": "8ba128145ce775de",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "274ede69242d1dbe",
+        "type": "http request",
+        "z": "8ba128145ce775de",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://192.168.10.110/roller/0?go=open ",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 410,
+        "y": 600,
+        "wires": [
+            [
+                "1af28d1058f44a1a"
+            ]
+        ]
+    },
+    {
+        "id": "d7aa7fe9afb218d5",
+        "type": "inject",
+        "z": "8ba128145ce775de",
+        "name": "OPEN Roller",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 600,
+        "wires": [
+            [
+                "274ede69242d1dbe"
+            ]
+        ]
+    },
+    {
+        "id": "1af28d1058f44a1a",
+        "type": "debug",
+        "z": "8ba128145ce775de",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "e5fb02d028001e6b",
+        "type": "http request",
+        "z": "8ba128145ce775de",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://192.168.10.110/roller/0?go=to_pos&roller_pos=30",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 410,
+        "y": 660,
+        "wires": [
+            [
+                "9031b2481d6231d7"
+            ]
+        ]
+    },
+    {
+        "id": "2df2c974aa1f578a",
+        "type": "inject",
+        "z": "8ba128145ce775de",
+        "name": "OPEN Roller at 30%",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 660,
+        "wires": [
+            [
+                "e5fb02d028001e6b"
+            ]
+        ]
+    },
+    {
+        "id": "9031b2481d6231d7",
+        "type": "debug",
+        "z": "8ba128145ce775de",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "b576b30b09fdaec6",
+        "type": "http request",
+        "z": "8ba128145ce775de",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "192.168.10.110/color/0?turn=on&red=255&green=86&blue=112&white=0",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 410,
+        "y": 720,
+        "wires": [
+            [
+                "856857f12a2033b7"
+            ]
+        ]
+    },
+    {
+        "id": "969a0a7c630bd011",
+        "type": "inject",
+        "z": "8ba128145ce775de",
+        "name": "Bulb SET Colors",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 720,
+        "wires": [
+            [
+                "b576b30b09fdaec6"
+            ]
+        ]
+    },
+    {
+        "id": "856857f12a2033b7",
+        "type": "debug",
+        "z": "8ba128145ce775de",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "faf602d31e87bd00",
+        "type": "http request",
+        "z": "8ba128145ce775de",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "192.168.10.110/color/0?turn=on&red=255&green=86&blue=112&white=0&gain=27 ",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 410,
+        "y": 780,
+        "wires": [
+            [
+                "a350d0e80d2e0c3a"
+            ]
+        ]
+    },
+    {
+        "id": "5a9c8281d8bd7e5a",
+        "type": "inject",
+        "z": "8ba128145ce775de",
+        "name": "Bulb SET Intensity",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 780,
+        "wires": [
+            [
+                "faf602d31e87bd00"
+            ]
+        ]
+    },
+    {
+        "id": "a350d0e80d2e0c3a",
+        "type": "debug",
+        "z": "8ba128145ce775de",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 780,
+        "wires": []
+    }
+]

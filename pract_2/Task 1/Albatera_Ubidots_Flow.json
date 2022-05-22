@@ -1,0 +1,108 @@
+[
+    {
+        "id": "fda7105c07131e22",
+        "type": "tab",
+        "label": "Flow 5",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "6fa73d121c53cc93",
+        "type": "inject",
+        "z": "fda7105c07131e22",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 300,
+        "wires": [
+            [
+                "45977f9285f932ec"
+            ]
+        ]
+    },
+    {
+        "id": "a4f5edcc437642c0",
+        "type": "ubidots_out",
+        "z": "fda7105c07131e22",
+        "name": "",
+        "token": "BBFF-erO6TVkJ5Zki29I70mRkZwl2AF2l6p",
+        "label_device": "",
+        "device_label": "Comunicaciones",
+        "tier": "educational",
+        "tls_checkbox": true,
+        "x": 830,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "45977f9285f932ec",
+        "type": "openweathermap",
+        "z": "fda7105c07131e22",
+        "name": "",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "Albatera",
+        "country": "Spain",
+        "language": "en",
+        "x": 460,
+        "y": 300,
+        "wires": [
+            [
+                "1e4102e47c384725"
+            ]
+        ]
+    },
+    {
+        "id": "0c64db0be5e06418",
+        "type": "debug",
+        "z": "fda7105c07131e22",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "1e4102e47c384725",
+        "type": "function",
+        "z": "fda7105c07131e22",
+        "name": "",
+        "func": "tempc = msg.payload.tempc\nhumidity = msg.payload.humidity\npressure = msg.payload.pressure\ndescription = msg.payload.description\nclouds = msg.payload.clouds\nmsg.payload = {'temperature':tempc, 'humidity':humidity, 'pressure':pressure, 'description':description, 'clouds':clouds}\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 300,
+        "wires": [
+            [
+                "a4f5edcc437642c0",
+                "0c64db0be5e06418"
+            ]
+        ]
+    }
+]
